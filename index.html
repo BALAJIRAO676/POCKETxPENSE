@@ -108,6 +108,7 @@
             console.log({expenseItem});
 
             allExpenses.push(expenseItem);
+            console.log(allExpenses);
 
             //Add the value to TotalExpense
             totalExpense = totalExpense + expense;
@@ -117,7 +118,7 @@
             headingEl.textContent = someText;
 
         
-        const allExpenseHTML = allExpenses.map(exp => createListItem(expenseItem));
+        const allExpenseHTML = allExpenses.map(exp => createListItem(exp));
         
         const joinedAllExpenseHTML = allExpenseHTML.join("");
 
