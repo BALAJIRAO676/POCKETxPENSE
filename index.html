@@ -21,10 +21,10 @@
 <body>
         <nav class="navbar navbar-dark bg-dark">
                 <span class="navbar-brand mb-0 h1">POCKETxPENSE</span>
+                <span class="navbar-brand mb-0 h1" id="headingTotal"></span>
     </nav>
     <div class="container-fluid bg-light" style="min-height: 100vh">
         <div class="container">
-            <h1 id="headingTotal"></h1>
             <div class="jumbotron mt-4">
 					<div class="input-group mb-3">
 						<input
@@ -117,11 +117,11 @@
             headingEl.textContent = someText;
 
         
-        const allExpenseHTML = allExpenses.map(exp => createListItem(expense));
+        const allExpenseHTML = allExpenses.map(exp => createListItem(expenseItem));
         
         const joinedAllExpenseHTML = allExpenseHTML.join("");
 
-        console.log(joinedAllExpenseHTML);
+        
         expenseTableEl.innerHTML = joinedAllExpenseHTML;
         }
             const element = document.querySelector("#btnAddExpense");
@@ -129,24 +129,41 @@
 
             //Listen to click event 
             element.addEventListener("click", addExpenseToTotal, false);
+
+            // Controller functions 
+
+            //Get DateString
+            function getDateString(moment){
+                return moment.toLocaleDateString('en-US' , {
+                                    year: 'numeric',
+                                    month: 'long',
+                                    day: 'numeric'
+                                })
+            }
             
+            // Delete Items
+            function deleteItem(dateValue){
+                console.log('delete item called', dateValue);
+
+                for( let i=0; i<allExpenses.length; i++){
+                    if(allExpenses[i].moment.valueOf() == dateValue){
+                        console.log('Item Found', allExpenses[i]);
+                    }
+                }
+            }
         // View layer
         function createListItem ({ desc , amount , moment}){
             return `
             <li class="list-group-item d-flex justify-content-between">
 							<div class="d-flex flex-column">
                                     ${desc}
-                                    <small >${ moment.toLocaleDateString('en-US' , {
-                                    year: 'numeric',
-                                    month: 'long',
-                                    day: 'numeric'
-                                })}</small>
+                                    <small >${getDateString(moment)}</small>
 							</div>
 							<div>
 								<span class="px-5">
                                      ${amount}
 								</span>
-								<button type="button" class="btn btn-outline-danger btn-sm">
+								<button type="button" class="btn btn-outline-danger btn-sm" onclick="deleteItem(${moment.valueOf()})">
 									<i class="fas fa-trash-alt"></i>
 								</button>
 							</div>
