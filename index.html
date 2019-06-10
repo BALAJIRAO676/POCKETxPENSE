@@ -117,13 +117,7 @@
             const someText = ` Total: ${totalExpense}`
             headingEl.textContent = someText;
 
-        
-        const allExpenseHTML = allExpenses.map(exp => createListItem(exp));
-        
-        const joinedAllExpenseHTML = allExpenseHTML.join("");
-
-        
-        expenseTableEl.innerHTML = joinedAllExpenseHTML;
+        renderList(allExpenses);
         }
             const element = document.querySelector("#btnAddExpense");
             // console.log(element);
@@ -144,15 +138,45 @@
             
             // Delete Items
             function deleteItem(dateValue){
-                console.log('delete item called', dateValue);
+                 //const newArr = [];
+                // let count=0;
+                // console.log('delete item called', dateValue);
 
-                for( let i=0; i<allExpenses.length; i++){
-                    if(allExpenses[i].moment.valueOf() == dateValue){
-                        console.log('Item Found', allExpenses[i]);
-                    }
-                }
+                // // for( let i=0; i<allExpenses.length-count+1; i++){
+                // //     if(allExpenses[i].moment.valueOf() !== dateValue){
+                // //         newArr.push(allExpenses[i]);
+                // //     }
+                // // }
+                // for( let i=0; i<allExpenses.length-count; i++){
+                //     if(allExpenses[i].moment.valueOf() == dateValue){
+                //         for(let j=i; j<allExpenses.length; j++)
+                //         allExpenses[j]=allExpenses[j+1];
+                //     count = count +1;
+                //     }
+                    
+                //  const newArr = allExpenses.filter(expense => {
+                //    if (expense.moment.valueOf() !== dateValue){
+                //          return expense;
+                //      }
+                //  });
+            
+           // const newArr = allExpenses.filter(expense => expense.moment.valueOf() !== dateValue);
+                 
+
+                 allExpenses.splice(allExpenses.findIndex(e => e.moment.valueOf() === dateValue),
+                                    allExpenses.findIndex(e => e.moment.valueOf() === dateValue)+1);
+                 renderList(allExpenses);
             }
+            
+        
         // View layer
+
+        function renderList(arrOfList){
+            const allExpenseHTML = arrOfList.map(exp => createListItem(exp));
+            const joinedAllExpenseHTML = allExpenseHTML.join("");
+            expenseTableEl.innerHTML = joinedAllExpenseHTML;
+            
+        }
         function createListItem ({ desc , amount , moment}){
             return `
             <li class="list-group-item d-flex justify-content-between">
