@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="black"><meta name="msapplication-navbutton-color" content="black"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Personal Expense</title>
     <link
@@ -11,6 +12,7 @@
 			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 			crossorigin="anonymous"
     />
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
     <script
     defer
     src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
@@ -23,6 +25,7 @@
                 <span class="navbar-brand mb-0 h1">POCKETxPENSE</span><h5><font color="white" size=3>- built by BALAJIRAO</font></h5>
                 <span class="navbar-brand mb-0 h1" id="headingTotal"></span>
     </nav>
+    
     <div class="container-fluid bg-light" style="min-height: 100vh">
         <div class="container">
             <div class="jumbotron mt-4">
@@ -117,6 +120,7 @@
             const someText = ` Total: ${totalExpense}`
             headingEl.textContent = someText;
 
+
         renderList(allExpenses);
         }
             const element = document.querySelector("#btnAddExpense");
@@ -138,33 +142,8 @@
             
             // Delete Items
             function deleteItem(dateValue){
-                 //const newArr = [];
-                // let count=0;
-                // console.log('delete item called', dateValue);
-
-                // // for( let i=0; i<allExpenses.length-count+1; i++){
-                // //     if(allExpenses[i].moment.valueOf() !== dateValue){
-                // //         newArr.push(allExpenses[i]);
-                // //     }
-                // // }
-                // for( let i=0; i<allExpenses.length-count; i++){
-                //     if(allExpenses[i].moment.valueOf() == dateValue){
-                //         for(let j=i; j<allExpenses.length; j++)
-                //         allExpenses[j]=allExpenses[j+1];
-                //     count = count +1;
-                //     }
-                    
-                //  const newArr = allExpenses.filter(expense => {
-                //    if (expense.moment.valueOf() !== dateValue){
-                //          return expense;
-                //      }
-                //  });
-            
-           // const newArr = allExpenses.filter(expense => expense.moment.valueOf() !== dateValue);
-                 
-
-                 allExpenses.splice(allExpenses.findIndex(e => e.moment.valueOf() === dateValue),
-                                    allExpenses.findIndex(e => e.moment.valueOf() === dateValue)+1);
+                
+                 allExpenses.splice(allExpenses.findIndex(e => e.moment.valueOf() === dateValue),1);
                  renderList(allExpenses);
             }
             
@@ -199,3 +178,4 @@
             </script>
 </body>
 </html>
+
