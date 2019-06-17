@@ -141,10 +141,11 @@
             }
             
             // Delete Items
-            function deleteItem(dateValue){
+            function deleteItem(dateValue,amount){
                 
                  allExpenses.splice(allExpenses.findIndex(e => e.moment.valueOf() === dateValue),1);
                  renderList(allExpenses);
+                //  totalExpense = totalExpense - amount;
             }
             
         
@@ -167,7 +168,7 @@
 								<span class="px-5">
                                      ${amount}
 								</span>
-								<button type="button" class="btn btn-outline-danger btn-sm" onclick="deleteItem(${moment.valueOf()})">
+								<button type="button" class="btn btn-outline-danger btn-sm" onclick="deleteItem(${moment.valueOf()}, ${amount})">
 									<i class="fas fa-trash-alt"></i>
 								</button>
 							</div>
