@@ -13,6 +13,7 @@
 			crossorigin="anonymous"
     />
     <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Mali&display=swap" rel="stylesheet"> 
     <script
     defer
     src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"
@@ -22,10 +23,12 @@
 </head>
 <body>
         <nav class="navbar navbar-dark bg-dark">
-                <span class="navbar-brand mb-0 h1">POCKETxPENSE</span><h5><font color="white" size=3>- built by BALAJIRAO</font></h5>
-                <span class="navbar-brand mb-0 h1" id="headingTotal"></span>
+                <span class="navbar-brand mb-0 h1"><i class="fas fa-barcode"></i>  POCKETxPENSE  <i class="fas fa-barcode"></i></span><h3 style="font-family: 'Mali', cursive; color: yellowgreen">{  <i class="fas fa-money-bill-alt"></i>
+                     Calculate Your Expenses Over Here 
+                     <i class="fas fa-wallet"></i> }</h3>
+                <span style="color: white;"><strong>Total:      </strong>  <span class="navbar-brand mb-0 h1" id="headingTotal"></span></span>
     </nav>
-    
+    <hr style="color: #b551ef;">
     <div class="container-fluid bg-light" style="min-height: 100vh">
         <div class="container">
             <div class="jumbotron mt-4">
@@ -117,7 +120,7 @@
             totalExpense = totalExpense + expense;
             
             // Set heading element to totalExpense
-            const someText = ` Total: ${totalExpense}`
+            const someText = ` ${totalExpense}`
             headingEl.textContent = someText;
 
 
@@ -144,8 +147,10 @@
             function deleteItem(dateValue,amount){
                 
                  allExpenses.splice(allExpenses.findIndex(e => e.moment.valueOf() === dateValue),1);
+                 totalExpense = totalExpense - amount;
+                 headingEl.textContent = totalExpense;
                  renderList(allExpenses);
-                //  totalExpense = totalExpense - amount;
+                  
             }
             
         
@@ -177,6 +182,40 @@
             `
         }
             </script>
+
+           </div>
+           <br><br><br>
+           <h3 style="font-family: 'Mali', cursive; color: #096b3a"> Recently read the book <i class="fas fa-book-reader"></i>  <strong style="border-style: solid; border-width: 3px ">' Rich Dad, Poor Dad '</strong> <br>
+            Got some exclusive tips for you guys! To become SUCCESSFUL and Get Rich <i class="fas fa-rupee-sign"></i>
+            <br><br>
+            <ol>
+            <li> The rich buy assets, not liabilities</li>
+            <li>First Invest and spend the rest i.e,<u> Bills first, rest later! </u></li>
+            <li> Invest in services that save you time.</li>
+            <li> Learn to sell</li>
+            <li> Start “no spending” days or weekends.</li>
+            <li> Repair things before discarding them.</li>
+        </ol>
+
+        Go give it a read if interested : 7 Ways to Build Financial Wealth 
+        <img src="book.png" alt="">
+    
+        </h3>
+        
+        </div>
+           
 </body>
+<br><br><br><br><br><br><br><br><br><br>
+ <div style="background-color: blueviolet"><!-- Footer -->
+ <footer style="margin-bottom: 0px;">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+      <a href="https://www.linkedin.com/in/balajiraop/" style="color: white;">Built by   <i class="far fa-smile"></i> <quad>  Balaji Rao</a>
+    </div>
+    <!-- Copyright -->
+  
+  </footer>
+  <!-- Footer --></div>
 </html>
 
